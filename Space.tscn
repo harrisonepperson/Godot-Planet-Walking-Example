@@ -2,40 +2,40 @@
 
 [ext_resource path="res://Character.gd" type="Script" id=2]
 
-[sub_resource type="SphereShape" id=10]
+[sub_resource type="SphereShape" id=1]
 radius = 5.0
 
-[sub_resource type="OpenSimplexNoise" id=1]
+[sub_resource type="OpenSimplexNoise" id=2]
 
-[sub_resource type="NoiseTexture" id=2]
+[sub_resource type="NoiseTexture" id=3]
 width = 1024
 seamless = true
-noise = SubResource( 1 )
+noise = SubResource( 2 )
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_texture = SubResource( 2 )
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = SubResource( 3 )
 
-[sub_resource type="SphereMesh" id=4]
-material = SubResource( 3 )
+[sub_resource type="SphereMesh" id=5]
+material = SubResource( 4 )
 radius = 5.0
 height = 10.0
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=6]
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 1, 0, 0, 1 )
 
-[sub_resource type="CubeMesh" id=7]
-material = SubResource( 6 )
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
 
-[sub_resource type="SphereShape" id=11]
+[sub_resource type="SphereShape" id=9]
 radius = 0.25
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=10]
 albedo_color = Color( 0, 1, 0, 1 )
 
-[sub_resource type="CylinderMesh" id=9]
-material = SubResource( 8 )
+[sub_resource type="CylinderMesh" id=11]
+material = SubResource( 10 )
 top_radius = 0.001
 bottom_radius = 0.2
 height = 0.5
@@ -45,20 +45,20 @@ height = 0.5
 [node name="Planet" type="StaticBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Planet"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Planet"]
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Planet"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 5.35468, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Planet/StaticBody"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Planet/StaticBody"]
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="Character" type="KinematicBody" parent="."]
@@ -66,12 +66,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.25 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Character"]
-shape = SubResource( 11 )
-
-[node name="Camera" type="Camera" parent="Character"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Character"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 9 )
+mesh = SubResource( 11 )
 material/0 = null
+
+[node name="Camera" type="Camera" parent="Character"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75 )
